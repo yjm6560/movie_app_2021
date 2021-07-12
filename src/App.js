@@ -1,42 +1,44 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
 
-function App() {
-  return (
-    <div>
-      {foodLike.map(food => <Food key={food.id} name={food.name} image={food.image} rating={food.rating} />)};
-    </div>
-  )
-}
-const foodLike = [
-  {
-    id      : 0,
-    name    : 'Kimchi',
-    image   : 'https://www.maangchi.com/wp-content/uploads/2019/11/vegankimchi-insta.jpg',
-    rating  : 5.0,
-  },
-  {
-    id      : 1,
-    name    : 'Potato',
-    image   : 'https://ctftime.org/media/team/save.jpg',
-    rating  : 4.0,
-  },
-]
+class App extends React.Component{
+  state = {
+    count : 0,
+  };
 
-function Food({name, image, rating}){
+  componentDidMount() {
+    console.log("Component mounted");
+  }
+
+  componentDidUpdate() {
+    console.log("Component updated");
+  }
+
+  componentWillUnmount() {
+    console.log("Component will be unmounted");
+  }
+
+  add = () => {
+    console.log('Add');
+    this.setState(current => ({
+      count : current.count + 1
+    }));
+  }
+
+  minus = () => {
+    console.log('Minus');
+    this.setState({count : this.state.count -1});
+  }
+
+  render() {
+    console.log("Component rendering");
     return (
       <div>
-        <h3>I love {name}</h3>
-        <h4>Rating : {rating}/5.0</h4>
-        <img src={image} style={{width : 300 + "px"}} alt={name}></img>
+        <h1>The number is : {this.state.count}</h1>
+        <button onClick={this.add}>Add</button>
+        <button onClick={this.minus}>Minus</button>
       </div>
-    );
+    )
+  }
 }
-
-Food.propTypes = {
-  name    : PropTypes.string.isRequired,
-  image   : PropTypes.string.isRequired,
-  rating  : PropTypes.number.isRequired,
-};
 
 export default App;
