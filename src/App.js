@@ -26,7 +26,7 @@ class App extends React.Component{
     const { isLoading } = this.state;
     return (
       <div>
-        {isLoading ? 'Loading...' : 'We are ready'}
+        {isLoading ? 'Loading...' : 'We Are Ready'}
       </div>
     )
   }
